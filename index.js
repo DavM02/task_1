@@ -9,37 +9,34 @@ function generateRandomName() {
 }
 
 function Person() {
-
-    this.name = generateRandomName()
-    this.age = generateRandomNumber()
-
-
+    this.name = generateRandomName();
+    this.age = generateRandomNumber();
     this.interval = setInterval(() => {
         this.age++;
     }, 1000);
-
 }
 
 let personsArray = [...Array(4)].map(() => new Person());
 
 function cleanUpArray() {
-    personsArray = personsArray.filter(person => {
-        if (person.age >= 40) {
-            clearInterval(person.interval); 
-            return false;
-        }
-        return true;
+    const toRemove = personsArray.filter(person => person.age >= 40);
+    toRemove.forEach(person => {
+        clearInterval(person.interval);
+        console.log(`removed from array: ${person.name}, age: ${person.age}`);
     });
+
+  
+    personsArray = personsArray.filter(person => person.age < 40);
 }
 
 function addNewPersons() {
-    personsArray.push(new Person())
+    personsArray.push(new Person());
 }
 
 setInterval(() => {
     cleanUpArray();
-    console.log(personsArray); 
+    console.log(personsArray);  
 }, 1000);
 
-
 setInterval(addNewPersons, 2000);
+
