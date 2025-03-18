@@ -36,7 +36,10 @@ function addNewPersons() {
     personsArray.push(new Person())
 }
 
+setInterval(() => {
+    cleanUpArray();
+    console.log(personsArray); 
+}, 1000);
 
-setInterval(cleanUpArray, 1000);
 
 setInterval(addNewPersons, 2000);
