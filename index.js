@@ -30,7 +30,6 @@ function cleanUpArray() {
         }
         return true;
     });
-    console.log(personsArray)
 }
 
 function addNewPersons() {
